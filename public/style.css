@@ -14,7 +14,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Para la firma absoluta */
 }
 
 /* CONTENEDOR PRINCIPAL */
@@ -26,9 +25,7 @@ body {
     flex-direction: column;
     gap: 24px;
     align-items: center;
-    justify-content: center; /* Centrado vertical */
-    min-height: 100vh;
-    position: relative; /* Para la firma relativa al container */
+    min-height: 100vh; /* ocupa toda la pantalla */
 }
 
 /* TÍTULO */
@@ -79,20 +76,18 @@ button:active {
 
 /* FIRMA */
 .signature {
-    position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: auto;       /* empuja la firma hacia abajo */
     font-size: 0.85rem;
     opacity: 0.55;
     text-align: center;
+    width: 100%;
 }
 
 /* ---------- GAME VIEW ---------- */
 
 #players {
     display: grid;
-    justify-items: center; /* Centra las tarjetas dentro del grid */
+    justify-items: center; /* centra las tarjetas dentro del grid */
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 16px;
     width: 100%;
