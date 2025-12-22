@@ -8,8 +8,11 @@ const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 
+let yaElegi = false; // 👈 BLOQUEO LOCAL
+
 socket.emit("unirse-sala", roomID);
 
+// Estado inicial
 socket.on("estado-inicial", (bloqueados) => {
     playersDiv.innerHTML = "";
 
@@ -21,23 +24,38 @@ socket.on("estado-inicial", (bloqueados) => {
         if (bloqueado) card.classList.add("disabled");
 
         card.onclick = () => {
-            if (!bloqueado) {
-                socket.emit("revelar-rol", i);
-            }
+            if (bloqueado || yaElegi) return; // 👈 clave
+            socket.emit("revelar-rol", i);
         };
 
         playersDiv.appendChild(card);
     });
 });
 
+// Bloqueo global (otros jugadores)
 socket.on("bloquear-boton", (jugador) => {
-    playersDiv.children[jugador].classList.add("disabled");
+    const card = playersDiv.children[jugador];
+    if (card) card.classList.add("disabled");
 });
 
+// Mostrar rol SOLO a este jugador
 socket.on("mostrar-rol", (rol) => {
     modalTitle.textContent = rol === "IMPOSTOR" ? "IMPOSTOR" : "Tu palabra";
-    modalText.textContent = rol;
+    modalText.innerHTML = `
+        <strong>${rol}</strong>
+        <p style="margin-top:10px; opacity:.8;">
+            Rol revelado. Espera a los demás jugadores.
+        </p>
+    `;
+
     modal.classList.remove("hidden");
+
+    yaElegi = true;
+
+    // 🔒 Deshabilitar TODAS las tarjetas localmente
+    Array.from(playersDiv.children).forEach(card => {
+        card.classList.add("disabled");
+    });
 });
 
 function cerrarModal() {
@@ -52,6 +70,7 @@ socket.on("reinicio", () => {
     location.reload();
 });
 
+// Copiar enlace
 const copiarBtn = document.getElementById("copiarLink");
 
 if (copiarBtn) {
@@ -67,7 +86,8 @@ if (copiarBtn) {
         }
     };
 }
-// Mostrar enlace de la sala
+
+// Input copiar enlace (si existe)
 const roomLinkInput = document.getElementById("roomLink");
 const copyBtn = document.getElementById("copyLinkBtn");
 
