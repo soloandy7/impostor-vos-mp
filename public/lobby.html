@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Impostor Vos?</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="lobby-body">
+
+<div class="lobby-container">
+    <h1 class="lobby-title">Impostor Vos?</h1>
+    <p class="lobby-subtitle">
+        Crea una partida y comparte el enlace con tus amigos
+    </p>
+
+    <div class="lobby-buttons">
+        <button onclick="crearPartida(4)">4 Jugadores</button>
+        <button onclick="crearPartida(5)">5 Jugadores</button>
+        <button onclick="crearPartida(6)">6 Jugadores</button>
+    </div>
+
+    <p class="lobby-footer">
+        Una persona será el impostor.  
+        ¿Podrán descubrirlo?
+    </p>
+</div>
+
+<script>
+async function crearPartida(max) {
+    const res = await fetch(`/crear-partida?max=${max}`);
+    const data = await res.json();
+    window.location.href = `/game/${data.roomID}`;
+}
+</script>
+<div class="creator-signature">
+    An indie party game by Andy
+</div>
+
+</body>
+</html>

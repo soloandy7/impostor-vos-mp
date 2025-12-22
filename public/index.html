@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Impostor Vos?</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<!-- INFO DE LA SALA -->
+<div class="room-info">
+    <span class="room-label">Sala activa</span>
+    <div class="room-link-box">
+        <input id="roomLink" type="text" readonly />
+        <button id="copyLinkBtn">Copiar enlace</button>
+    </div>
+</div>
+
+<div class="game-container">
+    <h1>Impostor Vos?</h1>
+
+    <div id="players" class="players-grid"></div>
+    
+    <button id="copiarLink" class="btn-secondary">Copiar enlace de partida</button>
+    <button id="reiniciar" class="btn-danger">Reiniciar partida</button>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <p id="modal-text"></p>
+        <button onclick="cerrarModal()">Entendido</button>
+    </div>
+</div>
+
+<!-- Socket.IO CDN -->
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="/script.js"></script>
+
+<div class="creator-signature">
+    An indie party game by Andy
+</div>
+
+</body>
+</html>
