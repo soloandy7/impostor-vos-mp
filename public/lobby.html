@@ -5,24 +5,31 @@
     <title>Impostor Vos?</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="lobby-body">
+<body>
 
-<div class="lobby-container">
-    <h1 class="lobby-title">Impostor Vos?</h1>
-    <p class="lobby-subtitle">
-        Crea una partida y comparte el enlace con tus amigos
-    </p>
+<div class="center-screen">
+    <div class="lobby-box">
+        <h1>Impostor Vos?</h1>
 
-    <div class="lobby-buttons">
-        <button onclick="crearPartida(4)">4 Jugadores</button>
-        <button onclick="crearPartida(5)">5 Jugadores</button>
-        <button onclick="crearPartida(6)">6 Jugadores</button>
+        <p style="opacity:0.8; margin-bottom:25px;">
+            Crea una partida y comparte el enlace con tus amigos
+        </p>
+
+        <div class="lobby-buttons">
+            <button onclick="crearPartida(4)">4 Jugadores</button>
+            <button onclick="crearPartida(5)">5 Jugadores</button>
+            <button onclick="crearPartida(6)">6 Jugadores</button>
+        </div>
+
+        <p style="margin-top:25px; font-size:0.9rem; opacity:0.6;">
+            Una persona será el impostor.<br>
+            ¿Podrán descubrirlo?
+        </p>
     </div>
+</div>
 
-    <p class="lobby-footer">
-        Una persona será el impostor.  
-        ¿Podrán descubrirlo?
-    </p>
+<div class="signature">
+    An indie party game by Andy
 </div>
 
 <script>
@@ -32,9 +39,6 @@ async function crearPartida(max) {
     window.location.href = `/game/${data.roomID}`;
 }
 </script>
-<div class="creator-signature">
-    An indie party game by Andy
-</div>
 
 </body>
 </html>

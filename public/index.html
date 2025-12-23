@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<!-- INFO DE LA SALA -->
+
+<!-- INFO DE LA SALA (FLOTANTE) -->
 <div class="room-info">
     <span class="room-label">Sala activa</span>
     <div class="room-link-box">
@@ -15,13 +16,22 @@
     </div>
 </div>
 
-<div class="game-container">
-    <h1>Impostor Vos?</h1>
+<!-- CONTENEDOR PRINCIPAL CENTRADO -->
+<div class="center-screen">
+    <div class="game-box">
+        <h1>Impostor Vos?</h1>
 
-    <div id="players" class="players-grid"></div>
-    
-    <button id="copiarLink" class="btn-secondary">Copiar enlace de partida</button>
-    <button id="reiniciar" class="btn-danger">Reiniciar partida</button>
+        <div id="players" class="players-grid"></div>
+
+        <div class="game-actions">
+            <button id="copiarLink" class="btn-secondary">
+                Copiar enlace de partida
+            </button>
+            <button id="reiniciar" class="btn-danger">
+                Reiniciar partida
+            </button>
+        </div>
+    </div>
 </div>
 
 <!-- MODAL -->
@@ -33,13 +43,14 @@
     </div>
 </div>
 
-<!-- Socket.IO CDN -->
-<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
-<script src="/script.js"></script>
-
-<div class="creator-signature">
+<!-- FIRMA -->
+<div class="signature">
     An indie party game by Andy
 </div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="/script.js"></script>
 
 </body>
 </html>
