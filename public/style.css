@@ -1,132 +1,126 @@
 /* RESET */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", system-ui, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* BODY */
+/* ===== FONDO GENERAL ===== */
 body {
-    background: radial-gradient(circle at top, #1e293b, #020617);
+    background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
+    min-height: 100vh;
     color: #fff;
+}
+
+/* ===== CENTRADO TOTAL ===== */
+.center-screen {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-}
-
-/* CONTENEDOR CENTRAL */
-.center-screen {
-    flex: 1;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
+    padding: 24px;
 }
 
-/* ===== LOBBY ===== */
-.lobby-box {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 45px 40px;
-    text-align: center;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(12px);
-}
-
-.lobby-box h1 {
-    font-size: 2.3rem;
-    margin-bottom: 30px;
-}
-
-.lobby-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.lobby-buttons button {
-    padding: 14px;
-    font-size: 1.05rem;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #6366f1, #3b82f6);
-    color: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.lobby-buttons button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.45);
-}
-
-/* ===== GAME ===== */
+/* ===== CAJA PRINCIPAL DEL JUEGO ===== */
 .game-box {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 32px;
     width: 100%;
-    max-width: 720px;
+    max-width: 520px;
     text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
+/* TÍTULO */
 .game-box h1 {
     font-size: 2.2rem;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
 }
 
-/* GRID DE JUGADORES */
-.players-container {
+/* ===== GRID DE PLAYERS ===== */
+.players-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 22px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
 }
 
-/* PLAYER CARD */
+/* TARJETA PLAYER */
 .player-card {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 35px 10px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.player-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.player-card.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-/* BOTÓN REINICIAR */
-#reiniciar {
-    margin-top: 35px;
-    padding: 14px 30px;
+    background: linear-gradient(145deg, #24245a, #1a1a3d);
     border-radius: 14px;
+    padding: 22px 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    user-select: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* HOVER */
+.player-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+}
+
+/* DESHABILITADO */
+.player-card.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ===== BOTONES ===== */
+.game-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+button {
     border: none;
-    background: #ef4444;
-    color: #fff;
+    border-radius: 12px;
+    padding: 14px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
 }
 
-#reiniciar:hover {
-    background: #dc2626;
+button:active {
+    transform: scale(0.97);
+}
+
+.btn-secondary {
+    background: #2f80ed;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #256ad1;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
 }
 
 /* ===== MODAL ===== */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0,0,0,0.75);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     z-index: 100;
 }
 
@@ -135,18 +129,62 @@ body {
 }
 
 .modal-content {
-    background: #020617;
-    padding: 40px;
+    background: #161633;
     border-radius: 18px;
-    text-align: center;
+    padding: 32px;
     max-width: 340px;
     width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.modal-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    margin-bottom: 22px;
+}
+
+/* ===== ROOM INFO (FLOTANTE) ===== */
+.room-info {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.45);
+    padding: 10px 14px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.room-info input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 240px;
+    font-size: 0.85rem;
+}
+
+.room-info button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
 }
 
 /* ===== FIRMA ===== */
 .signature {
-    text-align: center;
-    padding: 14px 0;
-    font-size: 0.85rem;
-    opacity: 0.6;
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    letter-spacing: 0.3px;
 }
+
